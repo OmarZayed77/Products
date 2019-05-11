@@ -1,0 +1,9 @@
+.welcome {
+    margin: 30px auto;
+    width: max-content;
+}
+h2 {
+    color: #324157;
+    text-transform: uppercase;
+    font-size: 40px;
+}

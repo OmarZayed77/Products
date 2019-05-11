@@ -1,0 +1,9 @@
+.editForm {
+    width: 60%;
+    margin: 50px auto;
+}
+.formImage {
+    margin-top: 50px;
+    max-width: 300px;
+    max-height: 500px;
+}

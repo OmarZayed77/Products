@@ -1,0 +1,1 @@
+# Layout for displaying and editing products using React js
