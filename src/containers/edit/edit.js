@@ -83,7 +83,10 @@ class Edit extends Component {
           this.setState({loading: false});
         });
       }
-      else return false;
+      else {
+        this.setState({loading: false});
+        return false;
+      } 
     });
   }
    
