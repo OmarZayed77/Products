@@ -125,7 +125,10 @@ class Edit extends Component {
         loading: false
       });
     })
-    .catch(console.error);
+    .catch(err => {
+      console.log(err);
+      this.setState({loading: false});
+    });
   }
   
   render() {
@@ -136,6 +139,31 @@ class Edit extends Component {
         <Select.Option label={c.name} value={c.id} key={c.id} />
       ); 
     }
+
+    // Make Sure that product to be edited exists
+    let form = (<h3>No Product Matched!</h3>);
+    if(this.state.product) form = (
+      <Form className={`${cssClasses.editForm} demo-ruleForm`} ref="form" model={this.state.form} rules={this.state.rules} labelWidth="100">
+        <Form.Item label="Name" prop="name">
+          <Input type="text" value={this.state.form.name} onChange={this.onChange.bind(this, 'name')} autoComplete="off" />
+        </Form.Item>
+        <Form.Item label="Image URL" prop="imageUrl">
+          <Input type="text" value={this.state.form.imageUrl} onChange={this.onChange.bind(this, 'imageUrl')} autoComplete="off" />
+        </Form.Item>
+        <Form.Item label="Price" prop="price">
+          <Input type="number" value={this.state.form.price} onChange={this.onChange.bind(this, 'price')}></Input>
+        </Form.Item>
+        <Form.Item label="Producer" prop="companyId">
+          <Select value={this.state.form.companyId} placeholder="Please Select A Producer" onChange={this.onChange.bind(this, 'companyId')}>
+            {selectoptions}
+          </Select>
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" onClick={this.handleSubmit.bind(this)}>Submit</Button>
+          <Button onClick={this.handleReset.bind(this)}>Reset</Button>
+        </Form.Item>
+      </Form>
+    );
     return (
       <Loading loading={this.state.loading}>
         <Layout.Row gutter="20">
@@ -146,26 +174,7 @@ class Edit extends Component {
 
           {/* Product Form */}
           <Layout.Col span="20">
-            <Form className={`${cssClasses.editForm} demo-ruleForm`} ref="form" model={this.state.form} rules={this.state.rules} labelWidth="100">
-              <Form.Item label="Name" prop="name">
-                <Input type="text" value={this.state.form.name} onChange={this.onChange.bind(this, 'name')} autoComplete="off" />
-              </Form.Item>
-              <Form.Item label="Image URL" prop="imageUrl">
-                <Input type="text" value={this.state.form.imageUrl} onChange={this.onChange.bind(this, 'imageUrl')} autoComplete="off" />
-              </Form.Item>
-              <Form.Item label="Price" prop="price">
-                <Input type="number" value={this.state.form.price} onChange={this.onChange.bind(this, 'price')}></Input>
-              </Form.Item>
-              <Form.Item label="Producer" prop="companyId">
-                <Select value={this.state.form.companyId} placeholder="Please Select A Producer" onChange={this.onChange.bind(this, 'companyId')}>
-                  {selectoptions}
-                </Select>
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" onClick={this.handleSubmit.bind(this)}>Submit</Button>
-                <Button onClick={this.handleReset.bind(this)}>Reset</Button>
-              </Form.Item>
-            </Form>
+            {form}
           </Layout.Col>
         </Layout.Row>
       </Loading>
