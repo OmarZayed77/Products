@@ -2,7 +2,7 @@
     margin: 30px auto;
     width: max-content;
 }
-h2 {
+.notFound h2 {
     text-align: center;
     color: #FF4949;
     text-transform: uppercase;
