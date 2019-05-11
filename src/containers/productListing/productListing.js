@@ -25,7 +25,7 @@ class ProductListing extends Component {
         {
           label: "Name",
           prop: "name",
-          width: 210,
+          width: 200,
           align: "center",
           render: function(data){
             return (<>{data.name}</>);
@@ -35,7 +35,7 @@ class ProductListing extends Component {
         {
           label: "Price",
           prop: "price",
-          width: 210,
+          width: 200,
           align: "center",
           render: function(data){
             return (<>{data.price}  L.E.</>);
@@ -44,7 +44,7 @@ class ProductListing extends Component {
         {
           label: "Producer",
           prop: "company",
-          width: 210,
+          width: 200,
           align: "center",
           render: function(data){
             return (<>{data.companyName}</>);
@@ -52,7 +52,7 @@ class ProductListing extends Component {
         },
         {
           label: "",
-          width: 300,
+          width: 200,
           align: "center",
           render: (data) => {
             return (
